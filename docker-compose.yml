@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: meu-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 1Ui@CN,d
+      MYSQL_DATABASE: gestao_de_ocorrencias
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: UNI@VESP
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "appuser", "-pUNI@VESP"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: incident-management
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestao_de_ocorrencias
+      SPRING_DATASOURCE_USERNAME: appuser
+      SPRING_DATASOURCE_PASSWORD: UNI@VESP
+
+      STUDENTS_IMAGES_PATH: /app/uploads/students
+      APP_BASE_URL: http://localhost:8090
+    depends_on:
+      db:
+        condition: service_healthy
+
+    volumes:
+      - ./uploads/students:/app/uploads/students
+
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge

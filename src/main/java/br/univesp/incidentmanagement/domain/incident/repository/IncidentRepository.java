@@ -1,0 +1,19 @@
+package br.univesp.incidentmanagement.domain.incident.repository;
+
+import br.univesp.incidentmanagement.domain.incident.model.Incident;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+
+import java.util.Optional;
+
+public interface IncidentRepository {
+    Incident save(Incident incident);
+    Page<Incident> findAll(Pageable pageable);
+    Page<Incident> findAllActive(Pageable pageable);
+    Page<Incident> findAllWaiting(Pageable pageable);
+    Page<Incident> findAllProgressing(Pageable pageable);
+    Page<Incident> findAllClosed(Pageable pageable);
+    Optional<Incident> findById(Long id);
+    Page<Incident> findAllSolved(Pageable pageable);
+    Page<Incident> findAllUnsolved(Pageable pageable);
+}
