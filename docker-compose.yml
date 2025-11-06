@@ -30,10 +30,7 @@ services:
     ports:
       - "8090:8090"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/gestao_de_ocorrencias
-      SPRING_DATASOURCE_USERNAME: appuser
-      SPRING_DATASOURCE_PASSWORD: UNI@VESP
-
+      SPRING_PROFILES_ACTIVE: prod
       STUDENTS_IMAGES_PATH: /app/uploads/students
       APP_BASE_URL: http://localhost:8090
     depends_on:

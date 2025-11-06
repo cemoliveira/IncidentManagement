@@ -5,10 +5,7 @@ import br.univesp.incidentmanagement.application.user.service.LoginService;
 import br.univesp.incidentmanagement.infra.security.dto.TokenJWTDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
@@ -19,6 +16,7 @@ public class AuthenticationController {
         this.loginService = loginService;
     }
 
+    @CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
     @PostMapping
     public ResponseEntity<TokenJWTDTO> login(@RequestBody @Valid AuthenticationDTO data) {
         TokenJWTDTO token = loginService.login(data);
