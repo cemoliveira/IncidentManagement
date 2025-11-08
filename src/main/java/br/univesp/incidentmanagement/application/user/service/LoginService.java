@@ -25,7 +25,8 @@ public class LoginService {
     public TokenJWTDTO login(AuthenticationDTO data) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         Authentication authentication = manager.authenticate(token);
+        User user = (User) authentication.getPrincipal();
         String tokenJWT = tokenService.createToken((User) authentication.getPrincipal());
-        return new TokenJWTDTO(tokenJWT);
+        return new TokenJWTDTO(tokenJWT, user.getId(), user.getLogin());
     }
 }
