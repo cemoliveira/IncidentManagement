@@ -6,5 +6,6 @@ public record UserDetailsDTO(
         Long id,
         String name,
         String login,
-        Role role) {
+        Role role,
+        Boolean active) {
 }
