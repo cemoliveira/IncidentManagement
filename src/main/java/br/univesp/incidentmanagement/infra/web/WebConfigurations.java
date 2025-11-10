@@ -1,4 +1,4 @@
-package br.univesp.incidentmanagement.infra.web;
+/*package br.univesp.incidentmanagement.infra.web;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -16,4 +16,4 @@ public class WebConfigurations implements WebMvcConfigurer {
         registry.addResourceHandler("/uploads/students/**")
                 .addResourceLocations("file:" + uploadPath + "/");
     }
-}
+}*/

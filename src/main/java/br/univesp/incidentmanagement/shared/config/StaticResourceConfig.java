@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class StaticResourceConfig implements WebMvcConfigurer {
 
-    @Value("${students.images.path}")
-    private String studentsImagesPath;
+    /*@Value("${students.images.path}")
+    private String studentsImagesPath;*/
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
