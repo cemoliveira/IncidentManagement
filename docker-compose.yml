@@ -32,7 +32,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: prod
       STUDENTS_IMAGES_PATH: /app/uploads/students
-      APP_BASE_URL: http://localhost:8090
+      APP_BASE_URL: http://167.234.235.128:8090
     depends_on:
       db:
         condition: service_healthy
