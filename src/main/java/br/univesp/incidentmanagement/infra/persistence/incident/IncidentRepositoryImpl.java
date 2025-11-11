@@ -1,5 +1,6 @@
 package br.univesp.incidentmanagement.infra.persistence.incident;
 
+import br.univesp.incidentmanagement.domain.incident.enums.Status;
 import br.univesp.incidentmanagement.domain.incident.model.Incident;
 import br.univesp.incidentmanagement.domain.incident.repository.IncidentRepository;
 import org.springframework.data.domain.Page;
@@ -64,12 +65,12 @@ public class IncidentRepositoryImpl implements IncidentRepository {
     }
 
     @Override
-    public Long countByStatusIn(List<String> status) {
+    public Long countByStatusIn(List<Status> status) {
         return jpaIncidentRepository.countByStatusIn(status);
     }
 
     @Override
-    public Long countByStatus(String status) {
+    public Long countByStatus(Status status) {
         return jpaIncidentRepository.countByStatus(status);
     }
 

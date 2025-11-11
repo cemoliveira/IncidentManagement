@@ -1,5 +1,6 @@
 package br.univesp.incidentmanagement.infra.persistence.incident;
 
+import br.univesp.incidentmanagement.domain.incident.enums.Status;
 import br.univesp.incidentmanagement.domain.incident.model.Incident;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -80,7 +81,7 @@ public interface JpaIncidentRepository extends JpaRepository<Incident, Long> {
         AND
         o.deleted = false
     """)
-    Long countByStatusIn(@Param("status") List<String> status);
+    Long countByStatusIn(@Param("status") List<Status> status);
 
     @Query("""
         SELECT COUNT(o)
@@ -90,7 +91,7 @@ public interface JpaIncidentRepository extends JpaRepository<Incident, Long> {
         AND
         o.deleted = false
     """)
-    Long countByStatus(@Param("status") String status);
+    Long countByStatus(@Param("status") Status status);
 
     @Query("""
         SELECT o.category AS key,
