@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Component
@@ -59,5 +61,35 @@ public class IncidentRepositoryImpl implements IncidentRepository {
     @Override
     public Optional<Incident> findById(Long id) {
         return jpaIncidentRepository.findById(id);
+    }
+
+    @Override
+    public Long countByStatusIn(List<String> status) {
+        return jpaIncidentRepository.countByStatusIn(status);
+    }
+
+    @Override
+    public Long countByStatus(String status) {
+        return jpaIncidentRepository.countByStatus(status);
+    }
+
+    @Override
+    public List<Map<String, Object>> countGroupedByCategory() {
+        return jpaIncidentRepository.countGroupedByCategory();
+    }
+
+    @Override
+    public List<Map<String, Object>> countGroupedByType() {
+        return jpaIncidentRepository.countGroupedByType();
+    }
+
+    @Override
+    public List<Map<String, Object>> countGroupedBySchoolClass() {
+        return jpaIncidentRepository.countGroupedBySchoolClass();
+    }
+
+    @Override
+    public List<Map<String, Object>> countGroupedByStudent() {
+        return jpaIncidentRepository.countGroupedByStudent();
     }
 }

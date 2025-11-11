@@ -156,4 +156,10 @@ public class IncidentController {
         incidentService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/summary")
+    @PreAuthorize("hasAnyRole('ADMINISTRATIVO', 'COORDENADOR', 'ANALISTA', 'PROFESSOR')")
+    public ResponseEntity<IncidentSummaryDTO> getSummary() {
+        return ResponseEntity.ok(incidentService.getSummary());
+    }
 }

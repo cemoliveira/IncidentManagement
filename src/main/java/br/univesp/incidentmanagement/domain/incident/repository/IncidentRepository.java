@@ -4,6 +4,8 @@ import br.univesp.incidentmanagement.domain.incident.model.Incident;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface IncidentRepository {
@@ -16,4 +18,10 @@ public interface IncidentRepository {
     Optional<Incident> findById(Long id);
     Page<Incident> findAllSolved(Pageable pageable);
     Page<Incident> findAllUnsolved(Pageable pageable);
+    Long countByStatusIn(List<String> status);
+    Long countByStatus(String status);
+    List<Map<String, Object>> countGroupedByCategory();
+    List<Map<String, Object>> countGroupedByType();
+    List<Map<String, Object>> countGroupedBySchoolClass();
+    List<Map<String, Object>> countGroupedByStudent();
 }

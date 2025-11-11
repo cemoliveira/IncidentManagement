@@ -170,4 +170,19 @@ public class IncidentService {
         incident.setDeleted(true);
         incidentRepository.save(incident);
     }
+
+    public IncidentSummaryDTO getSummary() {
+        return new IncidentSummaryDTO(
+                incidentRepository.countByStatusIn(List.of("AGUARDANDO_ATENDIMENTO", "EM_ATENDIMENTO")),
+                incidentRepository.countByStatus("AGUARDANDO_ATENDIMENTO"),
+                incidentRepository.countByStatus("EM_ATENDIMENTO"),
+                incidentRepository.countByStatus("SOLUCIONADA"),
+                incidentRepository.countByStatus("ENCERRADA_SEM_SOLUÇÃO"),
+                incidentRepository.countByStatusIn(List.of("SOLUCIONADA", "ENCERRADA_SEM_SOLUÇÃO")),
+                incidentRepository.countGroupedByCategory(),
+                incidentRepository.countGroupedByType(),
+                incidentRepository.countGroupedBySchoolClass(),
+                incidentRepository.countGroupedByStudent()
+        );
+    }
 }
