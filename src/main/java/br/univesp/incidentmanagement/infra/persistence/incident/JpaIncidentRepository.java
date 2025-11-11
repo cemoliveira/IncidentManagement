@@ -15,10 +15,7 @@ public interface JpaIncidentRepository extends JpaRepository<Incident, Long> {
         FROM Ocorrencia o
         WHERE
         o.deleted = false
-        AND
-        o.status = 'AGUARDANDO_ATENDIMENTO'
-        OR
-        o.status = 'EM_ATENDIMENTO'
+        AND o.status IN ('AGUARDANDO_ATENDIMENTO', 'EM_ATENDIMENTO')
     """)
     Page<Incident> findAllActive(Pageable pageable);
 
@@ -47,10 +44,7 @@ public interface JpaIncidentRepository extends JpaRepository<Incident, Long> {
         FROM Ocorrencia o
         WHERE
         o.deleted = false
-        AND
-        o.status = 'SOLUCIONADA'
-        OR
-        o.status = 'ENCERRADA_SEM_SOLUÇÃO'
+        AND o.status IN ('SOLUCIONADA', 'ENCERRADA_SEM_SOLUÇÃO')
     """)
     Page<Incident> findAllClosed(Pageable pageable);
 

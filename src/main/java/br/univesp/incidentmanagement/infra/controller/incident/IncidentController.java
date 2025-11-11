@@ -2,7 +2,6 @@ package br.univesp.incidentmanagement.infra.controller.incident;
 
 import br.univesp.incidentmanagement.application.incident.dto.*;
 import br.univesp.incidentmanagement.application.incident.service.IncidentService;
-import br.univesp.incidentmanagement.application.schoolclass.dto.SchoolClassDetailsDTO;
 import br.univesp.incidentmanagement.domain.incident.enums.Category;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
