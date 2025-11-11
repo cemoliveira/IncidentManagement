@@ -67,6 +67,12 @@ public class IncidentService {
         return incidentRepository.findAll(pageable).map(incidentMapper::toDetailsDTO);
     }
 
+    public IncidentDetailsDTO showDetails(Long id) {
+        Incident incident = incidentRepository.findById(id)
+                .orElseThrow(() -> new IncidentNotFoundException("Ocorrência não encontrada!"));
+        return incidentMapper.toDetailsDTO(incident);
+    }
+
     public Page<IncidentIniListDTO> listWaiting(Pageable pageable) {
         return incidentRepository.findAllWaiting(pageable).map(incidentMapper::toIniListDTO);
     }
