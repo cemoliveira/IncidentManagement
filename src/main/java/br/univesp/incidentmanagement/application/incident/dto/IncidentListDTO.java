@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public record IncidentListDTO(
         Long id,
         String schoolClassName,
-        String StudentName,
+        String studentName,
         Type type,
         String description,
         Status status,

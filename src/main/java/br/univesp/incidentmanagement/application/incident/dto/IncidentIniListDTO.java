@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 
 public record IncidentIniListDTO(
         Long id,
-        String nameSchoolClass,
-        String nameStudent,
+        String schoolClassName,
+        String studentName,
 
         @JsonFormat(pattern = "dd/MM/yyyy - HH:mm")
         LocalDateTime registerDate,
